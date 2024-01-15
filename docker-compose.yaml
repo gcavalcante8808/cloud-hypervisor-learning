@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  ch:
+    image: cloudhypervisor:rest
+    build:
+      context: .
+      target: builder
+    tty: true
+    privileged: true
+    command:
+      - cloud-hypervisor
+      - --api-socket
+      - /var/run/ch/cloud-hypervisor.sock
+    volumes:
+      - ./images:/usr/src/images
+      - ./socket:/var/run/ch/
+      - /dev/kvm:/dev/kvm
