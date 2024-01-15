@@ -5,15 +5,13 @@ services:
     image: cloudhypervisor:rest
     build:
       context: .
-      target: builder
+      target: final
     tty: true
     privileged: true
     command:
       - cloud-hypervisor
       - --api-socket
       - /var/run/ch/cloud-hypervisor.sock
-      - --net
-      - "tap=,mac=,ip=,mask="
     volumes:
       - ./images:/usr/src/images
       - ./socket:/var/run/ch/
