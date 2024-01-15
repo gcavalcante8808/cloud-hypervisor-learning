@@ -12,7 +12,10 @@ services:
       - cloud-hypervisor
       - --api-socket
       - /var/run/ch/cloud-hypervisor.sock
+      - --net
+      - "tap=,mac=,ip=,mask="
     volumes:
       - ./images:/usr/src/images
       - ./socket:/var/run/ch/
       - /dev/kvm:/dev/kvm
+      - /dev/net/tun:/dev/net/tun
